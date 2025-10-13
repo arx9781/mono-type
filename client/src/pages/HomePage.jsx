@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { RateLimitedNotif } from "../components/RateLimitedNotif";
 import { NoteCard } from "../components/NoteCard";
-import axios from "axios";
+
+import { api } from "../lib/axios";
 import toast from "react-hot-toast";
 
-const HomePage = () => {
+export const HomePage = () => {
   const [isRateLimited, setIsRateLimited] = useState(false);
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,12 +14,17 @@ const HomePage = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/notes");
+        const res = await api.get("/notes");
         if (res.data.success && Array.isArray(res.data.data)) {
           setNotes(res.data.data);
         } else {
           console.error("Unexpected data format:", res.data);
-          toast.error("Unexpected data format from server");
+          toast.error("Unexpected data format from server", {
+            style: {
+              background: "#0a0a0a",
+              color: "#cfcfcf",
+            },
+          });
         }
         setIsRateLimited(false);
       } catch (error) {
@@ -26,7 +32,12 @@ const HomePage = () => {
         if (error.response?.status === 429) {
           setIsRateLimited(true);
         } else {
-          toast.error("Failed to fetch notes.");
+          toast.error("Failed to fetch notes.", {
+            style: {
+              background: "#0a0a0a",
+              color: "#cfcfcf",
+            },
+          });
         }
       } finally {
         setLoading(false);
@@ -61,5 +72,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;
