@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { RateLimitedNotif } from "../components/RateLimitedNotif";
+import { NoteCard } from "../components/NoteCard";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -36,7 +37,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-base-300">
       <Navbar />
       {isRateLimited && <RateLimitedNotif />}
 
@@ -52,13 +53,7 @@ const HomePage = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {notes.map((note) => (
-              <div
-                key={note._id}
-                className="bg-base-200 p-6 rounded-lg shadow-md"
-              >
-                <h2 className="text-lg font-semibold mb-2">{note.title}</h2>
-                <p className="text-base-content/70">{note.content}</p>
-              </div>
+              <NoteCard key={note._id} note={note} />
             ))}
           </div>
         )}
