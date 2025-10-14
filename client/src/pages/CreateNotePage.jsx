@@ -19,6 +19,7 @@ export const CreateNotePage = () => {
         style: {
           background: "#0a0a0a",
           color: "#cfcfcf",
+          border: "1px solid #ff4d6d",
         },
       });
       return;
@@ -34,6 +35,7 @@ export const CreateNotePage = () => {
         style: {
           background: "#0a0a0a",
           color: "#cfcfcf",
+          border: "1px solid #4ade80",
         },
       });
       navigate("/");
@@ -43,6 +45,7 @@ export const CreateNotePage = () => {
         style: {
           background: "#0a0a0a",
           color: "#cfcfcf",
+          border: "1px solid #ff4d6d",
         },
       });
     } finally {
