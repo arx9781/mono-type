@@ -55,9 +55,9 @@ export const CreateNotePage = () => {
 
   return (
     <div className="min-h-screen bg-base-300">
-      <div className="container mx-auto px-4 pv-8">
+      <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto py-4">
-          <Link to={"/"} className="btn btn-ghost mb-6">
+          <Link to={"/"} className="btn btn-outline mb-6 ml-[30px]">
             <ArrowLeftIcon className="size-5" />
             Back to home
           </Link>
@@ -73,7 +73,7 @@ export const CreateNotePage = () => {
                   <input
                     type="text"
                     placeholder="Note Title"
-                    className="input input-bordered"
+                    className="input input-bordered placeholder:text-base-content/50"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
@@ -85,7 +85,7 @@ export const CreateNotePage = () => {
                   </label>
                   <textarea
                     placeholder="Your note content here..."
-                    className="textarea textarea-bordered h-32"
+                    className="textarea textarea-bordered h-96 placeholder:text-base-content/50"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                   />
@@ -100,7 +100,7 @@ export const CreateNotePage = () => {
                     {loading ? (
                       <div>
                         <span className="loading loading-spinner loading-sm text-secondary"></span>
-                        <span class="sr-only">Loading...</span>
+                        <span className="sr-only">Loading...</span>
                       </div>
                     ) : (
                       "Create Note"

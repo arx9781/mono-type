@@ -5,6 +5,7 @@ import { NoteCard } from "../components/NoteCard";
 
 import { api } from "../lib/axios";
 import toast from "react-hot-toast";
+import { CircleAlertIcon } from "lucide-react";
 
 export const HomePage = () => {
   const [isRateLimited, setIsRateLimited] = useState(false);
@@ -57,28 +58,19 @@ export const HomePage = () => {
       <main className="flex-1 max-w-6xl mx-auto p-4 mt-6">
         {loading ? (
           <div className="flex justify-center items-center py-20">
-            <span className="loading loading-spinner loading-lg text-secondary"></span>
+            <span className="loading loading-spinner loading-md text-secondary"></span>
             <span className="ml-4 text-secondary text-lg">
               Loading notes...
             </span>
           </div>
         ) : notes.length === 0 ? (
           <div className="flex flex-col items-center py-16">
-            <svg
-              width="48"
-              height="48"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="mb-4 text-base-content/40"
-              viewBox="0 0 24 24"
-            >
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M4 4v15"></path>
-            </svg>
-            <p className="text-base-content/70 font-semibold mb-2">
-              No notes found.
-            </p>
+            <div className="flex items-center gap-2">
+              <CircleAlertIcon className="size-4 text-error" />
+              <p className="text-base-content/70 font-semibold">
+                No notes found.
+              </p>
+            </div>
             <p className="text-base-content/50">
               Create your first note to get started!
             </p>

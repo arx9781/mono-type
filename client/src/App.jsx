@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import { HomePage } from "./pages/HomePage";
-import NoteDetailPage from "./pages/NoteDetailPage";
+import { NoteDetailPage } from "./pages/NoteDetailPage";
 import { CreateNotePage } from "./pages/CreateNotePage";
 import toast from "react-hot-toast";
 
